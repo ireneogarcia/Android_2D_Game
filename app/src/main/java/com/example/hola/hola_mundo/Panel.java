@@ -23,7 +23,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback{
 
         player = new RectPlayer(new Rect(100,100,200,200),  Color.rgb(0,230,0));
         playerPoint = new Point(150,150);
-
+        // focus event on touch mode and keypadmode
         setFocusable(true);
 
     }
