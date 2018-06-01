@@ -28,11 +28,9 @@ public class RectPlayer implements Object {
     }
     //Point is gonna be the center of rectangle
     public void update(Point point) {
-
         rectangle.set(point.x - rectangle.width()/2, point.y - rectangle.height()/2, point.x + rectangle.width()/2, point.y + rectangle.height()/2);
-
-
-
-
+    }
+    public Rect getRectangle(){
+        return rectangle;
     }
 }

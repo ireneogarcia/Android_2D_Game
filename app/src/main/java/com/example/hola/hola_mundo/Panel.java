@@ -14,6 +14,8 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback{
     private PrincipalThread thread;
     private RectPlayer player;
     private Point playerPoint;
+    private ObstacleManager obstacleManager;
+
     public Panel(Context context) {
         super(context); // igual a SurfaceView surfaceView(context)
 
@@ -22,7 +24,9 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback{
         thread = new PrincipalThread(getHolder(), this);
 
         player = new RectPlayer(new Rect(100,100,200,200),  Color.rgb(0,230,0));
-        playerPoint = new Point(150,150);
+        // Se une al Rectangulo creado asi que el centro del player depende del point
+        playerPoint = new Point(Constants.SCREEN_WIDTH/2,Constants.SCREEN_HEIGHT/2);
+        obstacleManager = new ObstacleManager(200, 300, 75, Color.BLACK);
         // focus event on touch mode and keypadmode
         setFocusable(true);
 
@@ -73,6 +77,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback{
 
     public void update(){
         player.update(playerPoint);
+        obstacleManager.update();
 
     }
 
@@ -82,8 +87,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback{
         //color del fondo
         canvas.drawColor(Color.WHITE);
         player.draw(canvas);
-
-
+        obstacleManager.draw(canvas);
     }
 
 

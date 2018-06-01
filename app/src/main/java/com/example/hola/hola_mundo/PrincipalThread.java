@@ -54,6 +54,8 @@ public class PrincipalThread extends Thread{
                 }
             }
             timeMillis = (System.nanoTime() - startTime)/1000000;
+            /*Trata de de no hacer correr el thread mas de la cuenta, sino que lo haga las veces
+            justas en función de los fps*/
             waitTime = targetTime - timeMillis;
             try {
                 if (waitTime>0)
